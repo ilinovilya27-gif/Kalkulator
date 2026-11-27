@@ -1,19 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:background="?attr/colorPrimary"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="История"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#555555"
+            app:cornerRadius="20dp"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnToggleTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Тема"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#A5A5A5"
+            app:cornerRadius="20dp"/>
+    </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvExpression"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="24sp"
+        android:gravity="end"
+        android:textColor="?attr/android:textColor"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="72sp"
+        android:gravity="end"
+        android:textColor="?attr/android:textColor"
+        android:text="0"
+        android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Button android:id="@+id/btnClear" android:text="C" android:textSize="20sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#A5A5A5" android:textColor="#000000" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnBack" android:text="⌫" android:textSize="20sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#A5A5A5" android:textColor="#000000" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnOpenBracket" android:text="(" android:textSize="20sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#A5A5A5" android:textColor="#000000" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnCloseBracket" android:text=")" android:textSize="20sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#A5A5A5" android:textColor="#000000" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnDivide" android:text="÷" android:textSize="24sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#FF9F0A" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+        <Button android:id="@+id/btn7" android:text="7" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btn8" android:text="8" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btn9" android:text="9" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnMultiply" android:text="×" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#FF9F0A" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+        <Button android:id="@+id/btn4" android:text="4" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btn5" android:text="5" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btn6" android:text="6" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnMinus" android:text="-" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#FF9F0A" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+        <Button android:id="@+id/btn1" android:text="1" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btn2" android:text="2" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btn3" android:text="3" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnPlus" android:text="+" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#FF9F0A" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+        <Button android:id="@+id/btn0" android:text="0" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="2" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnDot" android:text="." android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#333333" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+        <Button android:id="@+id/btnEquals" android:text="=" android:textSize="28sp" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:backgroundTint="#FF9F0A" android:textColor="#FFFFFF" app:cornerRadius="50dp" android:layout_margin="2dp"/>
+    </LinearLayout>
+
+</LinearLayout>

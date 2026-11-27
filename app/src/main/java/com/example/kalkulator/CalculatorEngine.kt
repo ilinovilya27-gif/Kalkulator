@@ -1,9 +1,15 @@
-package com.example.Kalkulator
+package com.example.kalkulator
 
 class CalculatorEngine(private val historyRepository: HistoryRepository) {
 
     fun calculate(expression: String): Double {
         val cleanExpression = expression.replace(" ", "")
+            .replace("×", "*")
+            .replace("÷", "/")
+            .replace("−", "-")
+            .replace(Regex("(\\d)\\("), "$1*(")
+            .replace(Regex("\\)(\\d)"), ")*$1")
+
         if (cleanExpression.isEmpty()) throw IllegalArgumentException("Пустое выражение")
 
         try {
@@ -34,8 +40,19 @@ class CalculatorEngine(private val historyRepository: HistoryRepository) {
             val char = str[i]
             if (char == ')') depth++
             if (char == '(') depth--
+
             if (depth == 0 && (char == '+' || char == '-')) {
-                if (i == 0) continue
+                if (i == 0) {
+                    i--
+                    continue
+                }
+
+                val prevChar = str[i - 1]
+                if (prevChar == '+' || prevChar == '-' || prevChar == '*' || prevChar == '/') {
+                    i--
+                    continue
+                }
+
                 val left = evaluate(str.substring(0, i))
                 val right = evaluate(str.substring(i + 1))
                 return if (char == '+') left + right else left - right
@@ -49,6 +66,7 @@ class CalculatorEngine(private val historyRepository: HistoryRepository) {
             val char = str[i]
             if (char == ')') depth++
             if (char == '(') depth--
+
             if (depth == 0 && (char == '*' || char == '/')) {
                 val left = evaluate(str.substring(0, i))
                 val right = evaluate(str.substring(i + 1))

@@ -1,11 +1,11 @@
-package com.example.Kalkulator
+package com.example.kalkulator
 
 import android.content.Context
 import java.io.File
 
-open class HistoryRepository(context: Context) {
-    private val historyFile = File(context.filesDir, "history.txt")
-    private val maxHistorySize = 30
+open class HistoryRepository(context: Context?) {
+    private val historyFile = File(context?.filesDir, "history.txt")
+    private val maxHistorySize = 20
 
     open fun addRecord(expression: String, result: String) {
         val newRecord = "$expression = $result"
